@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#667eea">
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiMzY1IERheXMgdG8gTWFsYXkgTWFzdGVyeSIsInNob3J0X25hbWUiOiJNYWxheSBNYXN0ZXJ5IiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1qUWlJR2hsYVdkb2REMGlNalFpSUhabGNuTnBiMjQ5SWpFdU1TSWdlRzFzYm5NOUltaDBkSEE2THk5M2QzY3Vkek11YjNKbkx6SXdNREF2YzNabklqNDhkR1Y0ZENCNFBTSXhNaUlnZVQwaU1USWlJSFJsZUhRdFlXNWphRzl5UFNKdGFXUmtiR1VpUGpGOE5qVThMM1JsZUhRK1BDOXpkbWMrIiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV0sInN0YXJ0X3VybCI6Ii4vIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzY2N2VlYSIsInRoZW1lX2NvbG9yIjoiIzY2N2VlYSJ9">
+    <title>365 Days to Malay Mastery</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            margin: 0;
+            padding: 10px;
+            min-height: 100vh;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            touch-action: manipulation;
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 20px 60px rgba(255, 154, 158, 0.3), 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .progress-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .progress-card {
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .progress-card:nth-child(1) {
+            background: linear-gradient(135deg, #3498db, #5dade2);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .progress-card:nth-child(1):hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.5);
+        }
+
+        .progress-card:nth-child(2) {
+            background: linear-gradient(135deg, #3498db, #5dade2);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .progress-card:nth-child(2):hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.5);
+        }
+
+        .progress-card:nth-child(3) {
+            background: linear-gradient(135deg, #3498db, #5dade2);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .progress-card:nth-child(3):hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.5);
+        }
+
+        .progress-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .progress-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .months-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .month-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .month-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .month-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .month-card:hover::before {
+            opacity: 1;
+        }
+
+        .month-card.available {
+            border-color: #ff6b6b;
+        }
+
+        .month-card.current {
+            border-color: #ff6b6b;
+            background: linear-gradient(135deg, #fff5f5, #ffe0e0);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
+        }
+
+        .month-card.completed {
+            border-color: #28a745;
+            background: #f8fff9;
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.2);
+        }
+
+
+
+        .month-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .month-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        .month-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .month-progress {
+            background: #f0f0f0;
+            border-radius: 10px;
+            height: 8px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .month-progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, #51cf66, #40c057);
+            transition: width 0.3s ease;
+        }
+
+        .month-status {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status-current {
+            background: #ffebee;
+            color: #d32f2f;
+            animation: pulse 2s infinite;
+        }
+
+        .status-completed {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .daily-lessons-view {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .daily-lessons-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .month-header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 40px;
+            border-radius: 25px;
+            margin-bottom: 35px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .daily-lesson-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-lesson-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .daily-lesson-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .daily-lesson-card:hover::after {
+            opacity: 1;
+        }
+
+        .daily-lesson-card.completed {
+            border-color: #28a745;
+            background: #f8fff9;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.15);
+        }
+
+        .daily-lesson-card.current {
+            border-color: #ff6b6b;
+            background: linear-gradient(135deg, #fff5f5, #ffe0e0);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+            animation: gentle-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+
+
+        .daily-lesson-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0077b6;
+            margin-bottom: 8px;
+        }
+
+        .daily-lesson-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+
+        .daily-lesson-focus {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .daily-lesson-status {
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        .lesson-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .lesson-content.active {
+            display: block;
+        }
+
+        .lesson-sections {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .section-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 18px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .section-btn:hover::before {
+            left: 100%;
+        }
+
+        .section-btn.active {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .section-btn:not(.active) {
+            background: #ffffff;
+            color: #666;
+            border: 2px solid #e9ecef;
+        }
+
+        .section-btn:not(.active):hover {
+            transform: translateY(-2px);
+            border-color: #ff6b6b;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.15);
+        }
+
+        .section-btn.completed {
+            background: #28a745;
+            color: white;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .section-content {
+            display: none;
+            background: #f8f9fa;
+            padding: 35px;
+            border-radius: 20px;
+            min-height: 500px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9ecef;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .vocab-item {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 18px;
+            border-left: 6px solid #ff6b6b;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vocab-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: #ee5a24;
+        }
+
+        .vocab-malay {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #0077b6;
+            margin-bottom: 10px;
+        }
+
+        .vocab-english {
+            color: #6c757d;
+            font-style: italic;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .vocab-pronunciation {
+            color: #28a745;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .vocab-example {
+            color: #495057;
+            font-size: 1rem;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #dee2e6;
+        }
+
+        .grammar-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .grammar-rule {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+            font-size: 1.1rem;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+
+        .option {
+            padding: 18px 25px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            font-size: 1.1rem;
+        }
+
+        .option:hover {
+            border-color: #48cae4;
+            background: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .complete-btn, .back-btn, .check-btn {
+            padding: 20px 40px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: 12px 8px;
+            min-height: 48px;
+            min-width: 120px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .complete-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .complete-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #059669, #047857);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            background: #5a6268;
+            box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
+        }
+
+        .check-btn {
+            background: #28a745;
+            color: white;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .check-btn:hover {
+            transform: translateY(-3px);
+            background: #218838;
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .feedback {
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .matching-exercise {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .matching-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 25px 0;
+        }
+
+        .malay-column, .english-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .match-item {
+            padding: 15px 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 500;
+            background: white;
+        }
+
+        .match-item:hover {
+            border-color: #48cae4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .match-item.selected {
+            border-color: #ff6b6b;
+            background: #fff5f5;
+            transform: scale(1.05);
+        }
+
+        .match-item.correct {
+            border-color: #28a745;
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .match-item.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .grammar-exercise {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .grammar-question {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid #48cae4;
+        }
+
+        .grammar-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            margin: 15px 0;
+            transition: border-color 0.3s ease;
+        }
+
+        .grammar-input:focus {
+            outline: none;
+            border-color: #48cae4;
+            box-shadow: 0 0 0 3px rgba(72, 202, 228, 0.1);
+        }
+
+        .grammar-feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .grammar-feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .grammar-feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .app-container {
+                padding: 15px;
+                border-radius: 15px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .lesson-sections {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .section-btn {
+                min-width: 100%;
+                padding: 18px;
+                font-size: 1.1rem;
+            }
+            
+            .vocabulary-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .months-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .daily-lessons-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .matching-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .grammar-question {
+                padding: 15px;
+            }
+            
+            .grammar-input {
+                font-size: 16px; /* Prevents zoom on iOS */
+                padding: 18px;
+            }
+            
+            .option {
+                padding: 20px;
+                font-size: 1.1rem;
+                margin: 8px 0;
+            }
+            
+            .match-item {
+                padding: 18px;
+                font-size: 1.1rem;
+                margin: 8px 0;
+            }
+            
+            .complete-btn, .back-btn, .check-btn {
+                width: 100%;
+                margin: 8px 0;
+                padding: 20px;
+                font-size: 1.2rem;
+            }
+            
+            .progress-overview {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            
+            .progress-card {
+                padding: 20px;
+            }
+            
+            .progress-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .progress-overview {
+                grid-template-columns: 1fr;
+            }
+            
+            .vocab-item {
+                padding: 20px;
+            }
+            
+            .vocab-malay {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1 class="title">🇲🇾 365 Days to Malay Mastery 🇲🇾</h1>
+            <p class="subtitle">Master Bahasa Melayu with 12 months of comprehensive daily lessons</p>
+            <div style="margin-top: 20px;">
+                <button onclick="startTodaysLesson()" style="font-size: 1.2rem; padding: 20px 40px; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); background: linear-gradient(135deg, #e67e22, #f39c12, #ff8c42); color: white; box-shadow: 0 8px 25px rgba(230, 126, 34, 0.6), 0 4px 15px rgba(255, 140, 66, 0.4); position: relative; overflow: hidden;" id="todayLessonBtn" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 35px rgba(230, 126, 34, 0.7), 0 6px 20px rgba(255, 140, 66, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(230, 126, 34, 0.6), 0 4px 15px rgba(255, 140, 66, 0.4)'">
+                    📚 Start Today's Lesson - Day 1
+                </button>
+            </div>
+        </div>
+
+        <!-- Progress Overview -->
+        <div id="progressOverview" class="progress-overview">
+            <div class="progress-card">
+                <div class="progress-number" id="completedDays">0</div>
+                <div class="progress-label">Days Completed</div>
+            </div>
+            <div class="progress-card">
+                <div class="progress-number" id="totalProgress">0%</div>
+                <div class="progress-label">Course Progress</div>
+            </div>
+            <div class="progress-card">
+                <div class="progress-number" id="streak">0</div>
+                <div class="progress-label">Day Streak</div>
+            </div>
+        </div>
+
+        <!-- Months Grid -->
+        <div id="monthsGrid" class="months-grid">
+            <!-- Months will be generated here -->
+        </div>
+
+        <!-- Daily Lessons View -->
+        <div id="dailyLessonsView" class="daily-lessons-view">
+            <!-- Daily lessons for selected month will be loaded here -->
+        </div>
+
+        <!-- Individual Lesson Content -->
+        <div id="lessonContent" class="lesson-content">
+            <!-- Individual lesson content will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive lesson database with 30 lessons per month
+        const monthDatabase = {
+            1: {
+                title: "Foundation & Basic Communication",
+                description: "Master essential greetings, introductions, and fundamental conversation skills",
+                lessons: [
+                    { title: "Hello & Goodbye", focus: "Basic greetings and farewells" },
+                    { title: "Introducing Yourself", focus: "Name, age, and origin" },
+                    { title: "Polite Expressions", focus: "Please, thank you, excuse me" },
+                    { title: "Yes, No & Maybe", focus: "Basic responses and agreement" },
+                    { title: "How Are You?", focus: "Asking about wellbeing" },
+                    { title: "Where Are You From?", focus: "Countries and nationalities" },
+                    { title: "What's Your Name?", focus: "Asking for personal information" },
+                    { title: "Nice to Meet You", focus: "First meeting expressions" },
+                    { title: "See You Later", focus: "Parting expressions" },
+                    { title: "Excuse Me & Sorry", focus: "Apologizing and getting attention" },
+                    { title: "Basic Questions", focus: "Who, what, where basics" },
+                    { title: "I Don't Understand", focus: "Communication difficulties" },
+                    { title: "Can You Help Me?", focus: "Asking for assistance" },
+                    { title: "Repeat Please", focus: "Clarification requests" },
+                    { title: "Speaking Slowly", focus: "Pace of conversation" },
+                    { title: "Basic Pronouns", focus: "I, you, he, she, we, they" },
+                    { title: "This & That", focus: "Demonstrative pronouns" },
+                    { title: "Here & There", focus: "Location indicators" },
+                    { title: "Basic Verbs", focus: "To be, to have, to go" },
+                    { title: "Present Tense", focus: "Current actions and states" },
+                    { title: "Simple Sentences", focus: "Subject + verb + object" },
+                    { title: "Asking Questions", focus: "Question formation basics" },
+                    { title: "Positive & Negative", focus: "Affirmative and negative forms" },
+                    { title: "Common Adjectives", focus: "Good, bad, big, small" },
+                    { title: "Basic Emotions", focus: "Happy, sad, angry, tired" },
+                    { title: "Weather Talk", focus: "Hot, cold, sunny, rainy" },
+                    { title: "Daily Routine", focus: "Wake up, eat, sleep" },
+                    { title: "Basic Needs", focus: "Hungry, thirsty, tired" },
+                    { title: "Simple Conversations", focus: "Putting it all together" },
+                    { title: "Month 1 Review", focus: "Comprehensive practice" }
+                ]
+            },
+            2: {
+                title: "Family, Relationships & Personal Life",
+                description: "Learn about family members, relationships, and describing people in your life",
+                lessons: [
+                    { title: "Family Members", focus: "Parents, siblings, children" },
+                    { title: "Extended Family", focus: "Grandparents, aunts, uncles" },
+                    { title: "Family Relationships", focus: "Describing family connections" },
+                    { title: "Ages & Birthdays", focus: "Talking about age" },
+                    { title: "Marital Status", focus: "Single, married, divorced" },
+                    { title: "Physical Appearance", focus: "Height, hair, eyes" },
+                    { title: "Personality Traits", focus: "Kind, funny, smart" },
+                    { title: "Occupations", focus: "What family members do" },
+                    { title: "Living Arrangements", focus: "Who lives where" },
+                    { title: "Family Activities", focus: "What families do together" },
+                    { title: "Childhood Memories", focus: "Talking about the past" },
+                    { title: "Family Traditions", focus: "Cultural practices" },
+                    { title: "Friends & Friendship", focus: "Types of friends" },
+                    { title: "Meeting New People", focus: "Making friends" },
+                    { title: "Social Activities", focus: "Hanging out together" },
+                    { title: "Describing People", focus: "Comprehensive descriptions" },
+                    { title: "Possessive Forms", focus: "My, your, his, her" },
+                    { title: "Family Photos", focus: "Describing pictures" },
+                    { title: "Family Tree", focus: "Genealogy vocabulary" },
+                    { title: "Household Members", focus: "Who lives in your house" },
+                    { title: "Pet Animals", focus: "Family pets" },
+                    { title: "Neighbors", focus: "People in your community" },
+                    { title: "Classmates", focus: "School relationships" },
+                    { title: "Colleagues", focus: "Work relationships" },
+                    { title: "Role Models", focus: "People you admire" },
+                    { title: "Family Problems", focus: "Challenges and solutions" },
+                    { title: "Celebrations", focus: "Family gatherings" },
+                    { title: "Communication", focus: "How families stay in touch" },
+                    { title: "Family Values", focus: "What's important" },
+                    { title: "Month 2 Review", focus: "Family & relationships practice" }
+                ]
+            },
+            3: {
+                title: "Time, Numbers & Daily Schedule",
+                description: "Master numbers, time expressions, and organizing your daily activities",
+                lessons: [
+                    { title: "Numbers 1-10", focus: "Basic counting" },
+                    { title: "Numbers 11-20", focus: "Teen numbers" },
+                    { title: "Numbers 21-100", focus: "Larger numbers" },
+                    { title: "Ordinal Numbers", focus: "First, second, third" },
+                    { title: "Telling Time", focus: "Hours and minutes" },
+                    { title: "Time Expressions", focus: "Morning, afternoon, evening" },
+                    { title: "Days of the Week", focus: "Monday through Sunday" },
+                    { title: "Months of the Year", focus: "January through December" },
+                    { title: "Dates & Years", focus: "Calendar expressions" },
+                    { title: "Seasons", focus: "Spring, summer, fall, winter" },
+                    { title: "Daily Schedule", focus: "What you do when" },
+                    { title: "Morning Routine", focus: "Getting ready for the day" },
+                    { title: "Work Schedule", focus: "Professional timing" },
+                    { title: "Evening Activities", focus: "After work/school" },
+                    { title: "Weekend Plans", focus: "Saturday and Sunday" },
+                    { title: "Appointments", focus: "Scheduling meetings" },
+                    { title: "Deadlines", focus: "Time limits" },
+                    { title: "Frequency", focus: "Always, sometimes, never" },
+                    { title: "Duration", focus: "How long things take" },
+                    { title: "Past Time", focus: "Yesterday, last week" },
+                    { title: "Future Time", focus: "Tomorrow, next month" },
+                    { title: "Time Zones", focus: "Different times around world" },
+                    { title: "Punctuality", focus: "Being on time" },
+                    { title: "Age & Birthdays", focus: "How old, when born" },
+                    { title: "Historical Dates", focus: "Important events" },
+                    { title: "Planning Ahead", focus: "Future scheduling" },
+                    { title: "Time Management", focus: "Organizing your time" },
+                    { title: "Clocks & Watches", focus: "Timepieces" },
+                    { title: "Calendar Events", focus: "Holidays and special days" },
+                    { title: "Month 3 Review", focus: "Time & numbers mastery" }
+                ]
+            },
+            4: {
+                title: "Colors, Descriptions & Physical World",
+                description: "Describe the world around you with colors, shapes, and descriptive language",
+                lessons: [
+                    { title: "Primary Colors", focus: "Red, blue, yellow" },
+                    { title: "Secondary Colors", focus: "Green, orange, purple" },
+                    { title: "Light & Dark", focus: "Shades and tints" },
+                    { title: "Color Combinations", focus: "Mixed colors" },
+                    { title: "Favorite Colors", focus: "Preferences" },
+                    { title: "Basic Shapes", focus: "Circle, square, triangle" },
+                    { title: "Complex Shapes", focus: "Rectangle, oval, diamond" },
+                    { title: "Size Descriptions", focus: "Big, small, medium" },
+                    { title: "Height & Length", focus: "Tall, short, long" },
+                    { title: "Width & Depth", focus: "Wide, narrow, thick" },
+                    { title: "Texture", focus: "Smooth, rough, soft" },
+                    { title: "Material", focus: "Wood, metal, plastic" },
+                    { title: "Patterns", focus: "Stripes, dots, solid" },
+                    { title: "Brightness", focus: "Bright, dim, shiny" },
+                    { title: "Temperature", focus: "Hot, cold, warm" },
+                    { title: "Weight", focus: "Heavy, light, medium" },
+                    { title: "Speed", focus: "Fast, slow, medium" },
+                    { title: "Age of Objects", focus: "New, old, ancient" },
+                    { title: "Condition", focus: "Good, bad, broken" },
+                    { title: "Cleanliness", focus: "Clean, dirty, messy" },
+                    { title: "Natural Objects", focus: "Describing nature" },
+                    { title: "Man-made Objects", focus: "Describing buildings" },
+                    { title: "Comparing Things", focus: "Bigger than, smaller than" },
+                    { title: "Superlatives", focus: "Biggest, smallest, best" },
+                    { title: "Beauty & Ugliness", focus: "Attractive, plain" },
+                    { title: "Describing Clothes", focus: "Fashion and style" },
+                    { title: "Describing Food", focus: "Appearance of meals" },
+                    { title: "Describing Places", focus: "Locations and spaces" },
+                    { title: "Art & Design", focus: "Creative descriptions" },
+                    { title: "Month 4 Review", focus: "Descriptive language mastery" }
+                ]
+            },
+            5: {
+                title: "Food, Cooking & Malaysian Cuisine",
+                description: "Explore Malaysian food culture, cooking terms, and dining experiences",
+                lessons: [
+                    { title: "Basic Foods", focus: "Rice, bread, meat, vegetables" },
+                    { title: "Malaysian Staples", focus: "Nasi lemak, rendang, satay" },
+                    { title: "Breakfast Foods", focus: "Morning meals" },
+                    { title: "Lunch Options", focus: "Midday dining" },
+                    { title: "Dinner Dishes", focus: "Evening meals" },
+                    { title: "Snacks & Treats", focus: "Between meal foods" },
+                    { title: "Beverages", focus: "Drinks hot and cold" },
+                    { title: "Fruits", focus: "Tropical and local fruits" },
+                    { title: "Vegetables", focus: "Common vegetables" },
+                    { title: "Spices & Herbs", focus: "Flavoring ingredients" },
+                    { title: "Cooking Methods", focus: "Fry, boil, steam, grill" },
+                    { title: "Kitchen Tools", focus: "Pots, pans, utensils" },
+                    { title: "Taste Descriptions", focus: "Sweet, sour, spicy, bitter" },
+                    { title: "Food Texture", focus: "Crispy, soft, chewy" },
+                    { title: "Portions & Serving", focus: "How much food" },
+                    { title: "Restaurant Ordering", focus: "Menu navigation" },
+                    { title: "Street Food", focus: "Hawker center culture" },
+                    { title: "Food Allergies", focus: "Dietary restrictions" },
+                    { title: "Healthy Eating", focus: "Nutritious choices" },
+                    { title: "Food Preparation", focus: "Getting ready to cook" },
+                    { title: "Grocery Shopping", focus: "Buying ingredients" },
+                    { title: "Food Storage", focus: "Keeping food fresh" },
+                    { title: "Dining Etiquette", focus: "Proper table manners" },
+                    { title: "Food Festivals", focus: "Cultural food events" },
+                    { title: "Regional Cuisines", focus: "Different Malaysian styles" },
+                    { title: "International Food", focus: "Non-Malaysian dishes" },
+                    { title: "Food Reviews", focus: "Describing restaurant experiences" },
+                    { title: "Cooking Shows", focus: "Food media vocabulary" },
+                    { title: "Food Memories", focus: "Nostalgic dishes" },
+                    { title: "Month 5 Review", focus: "Food & dining mastery" }
+                ]
+            },
+            6: {
+                title: "Shopping, Money & Consumer Culture",
+                description: "Navigate Malaysian markets, understand pricing, and master shopping vocabulary",
+                lessons: [
+                    { title: "Types of Stores", focus: "Shops, malls, markets" },
+                    { title: "Malaysian Currency", focus: "Ringgit and sen" },
+                    { title: "Price Asking", focus: "How much does it cost?" },
+                    { title: "Bargaining", focus: "Negotiating prices" },
+                    { title: "Payment Methods", focus: "Cash, card, digital" },
+                    { title: "Clothing Shopping", focus: "Sizes, styles, fitting" },
+                    { title: "Grocery Shopping", focus: "Food and household items" },
+                    { title: "Electronics", focus: "Gadgets and technology" },
+                    { title: "Traditional Markets", focus: "Pasar and wet markets" },
+                    { title: "Shopping Malls", focus: "Modern retail spaces" },
+                    { title: "Online Shopping", focus: "E-commerce vocabulary" },
+                    { title: "Sales & Discounts", focus: "Special offers" },
+                    { title: "Quality Assessment", focus: "Good vs poor quality" },
+                    { title: "Returns & Exchanges", focus: "Changing purchases" },
+                    { title: "Shopping Lists", focus: "Planning purchases" },
+                    { title: "Brand Names", focus: "Popular Malaysian brands" },
+                    { title: "Comparison Shopping", focus: "Finding best deals" },
+                    { title: "Seasonal Shopping", focus: "Holiday and festival buying" },
+                    { title: "Gift Buying", focus: "Presents for others" },
+                    { title: "Bulk Purchasing", focus: "Buying in quantity" },
+                    { title: "Luxury Items", focus: "Expensive purchases" },
+                    { title: "Budget Shopping", focus: "Saving money" },
+                    { title: "Consumer Rights", focus: "Shopper protection" },
+                    { title: "Shopping Etiquette", focus: "Polite shopping behavior" },
+                    { title: "Packaging", focus: "Bags, boxes, wrapping" },
+                    { title: "Delivery Services", focus: "Getting items delivered" },
+                    { title: "Shopping Experiences", focus: "Good and bad experiences" },
+                    { title: "Window Shopping", focus: "Looking without buying" },
+                    { title: "Shopping Addiction", focus: "Spending problems" },
+                    { title: "Month 6 Review", focus: "Shopping & money mastery" }
+                ]
+            },
+            7: {
+                title: "Transportation & Getting Around Malaysia",
+                description: "Master transportation vocabulary and navigation skills for Malaysian cities",
+                lessons: [
+                    { title: "Types of Transport", focus: "Car, bus, train, plane" },
+                    { title: "Public Transport", focus: "Buses and trains" },
+                    { title: "Private Transport", focus: "Cars and motorcycles" },
+                    { title: "Taxi & Ride-sharing", focus: "Grab and traditional taxis" },
+                    { title: "Directions Basics", focus: "Left, right, straight" },
+                    { title: "Street Navigation", focus: "Roads and intersections" },
+                    { title: "Landmarks", focus: "Notable buildings and places" },
+                    { title: "Distance & Time", focus: "How far, how long" },
+                    { title: "Traffic Conditions", focus: "Jam, clear, busy" },
+                    { title: "Parking", focus: "Finding and paying for parking" },
+                    { title: "Gas Stations", focus: "Fuel and services" },
+                    { title: "Road Signs", focus: "Understanding traffic signs" },
+                    { title: "Maps & GPS", focus: "Navigation tools" },
+                    { title: "Airport Travel", focus: "Flying vocabulary" },
+                    { title: "Train Stations", focus: "Railway terminology" },
+                    { title: "Bus Stops", focus: "Public bus system" },
+                    { title: "Highway Travel", focus: "Long distance driving" },
+                    { title: "City vs Rural", focus: "Urban and countryside transport" },
+                    { title: "Emergency Transport", focus: "Ambulance, breakdown" },
+                    { title: "Transport Costs", focus: "Fares and fees" },
+                    { title: "Schedules & Timetables", focus: "When transport runs" },
+                    { title: "Booking Transport", focus: "Reservations and tickets" },
+                    { title: "Transport Safety", focus: "Safe travel practices" },
+                    { title: "Rush Hour", focus: "Peak travel times" },
+                    { title: "Transport Apps", focus: "Digital transport tools" },
+                    { title: "Bicycle & Walking", focus: "Non-motorized transport" },
+                    { title: "Transport Problems", focus: "Delays and issues" },
+                    { title: "Interstate Travel", focus: "Between Malaysian states" },
+                    { title: "International Travel", focus: "Leaving Malaysia" },
+                    { title: "Month 7 Review", focus: "Transportation mastery" }
+                ]
+            },
+            8: {
+                title: "Work, Education & Professional Life",
+                description: "Professional vocabulary for workplace and educational environments",
+                lessons: [
+                    { title: "Job Titles", focus: "Common professions" },
+                    { title: "Workplace Vocabulary", focus: "Office and work terms" },
+                    { title: "Job Searching", focus: "Finding employment" },
+                    { title: "Interviews", focus: "Job interview language" },
+                    { title: "Work Schedule", focus: "Hours and shifts" },
+                    { title: "Salary & Benefits", focus: "Compensation discussion" },
+                    { title: "Office Equipment", focus: "Computers, printers, phones" },
+                    { title: "Meetings", focus: "Business meeting vocabulary" },
+                    { title: "Presentations", focus: "Speaking to groups" },
+                    { title: "Email & Communication", focus: "Professional correspondence" },
+                    { title: "Teamwork", focus: "Working with colleagues" },
+                    { title: "Leadership", focus: "Management vocabulary" },
+                    { title: "School System", focus: "Malaysian education structure" },
+                    { title: "Subjects & Courses", focus: "Academic disciplines" },
+                    { title: "Exams & Tests", focus: "Assessment vocabulary" },
+                    { title: "Grades & Results", focus: "Academic performance" },
+                    { title: "University Life", focus: "Higher education" },
+                    { title: "Research & Study", focus: "Academic work" },
+                    { title: "Libraries", focus: "Study resources" },
+                    { title: "Homework & Assignments", focus: "Student work" },
+                    { title: "Teachers & Professors", focus: "Educational staff" },
+                    { title: "Classmates & Study Groups", focus: "Peer learning" },
+                    { title: "Graduation", focus: "Completing education" },
+                    { title: "Career Planning", focus: "Future professional goals" },
+                    { title: "Skills Development", focus: "Learning new abilities" },
+                    { title: "Professional Training", focus: "Workplace learning" },
+                    { title: "Work-Life Balance", focus: "Managing career and personal life" },
+                    { title: "Retirement", focus: "End of career" },
+                    { title: "Entrepreneurship", focus: "Starting your own business" },
+                    { title: "Month 8 Review", focus: "Work & education mastery" }
+                ]
+            },
+            9: {
+                title: "Health, Body & Medical Care",
+                description: "Health vocabulary, body parts, and medical situations in Malaysia",
+                lessons: [
+                    { title: "Body Parts", focus: "Head, arms, legs, torso" },
+                    { title: "Internal Organs", focus: "Heart, lungs, stomach" },
+                    { title: "Senses", focus: "Sight, hearing, smell, taste, touch" },
+                    { title: "Common Illnesses", focus: "Cold, fever, headache" },
+                    { title: "Serious Diseases", focus: "Diabetes, heart disease, cancer" },
+                    { title: "Symptoms", focus: "Pain, nausea, dizziness" },
+                    { title: "Medical Professionals", focus: "Doctor, nurse, specialist" },
+                    { title: "Hospital Vocabulary", focus: "Emergency room, ward, surgery" },
+                    { title: "Clinic Visits", focus: "Routine medical appointments" },
+                    { title: "Pharmacy", focus: "Medicine and prescriptions" },
+                    { title: "Traditional Medicine", focus: "Herbal and alternative treatments" },
+                    { title: "Dental Care", focus: "Teeth and oral health" },
+                    { title: "Eye Care", focus: "Vision and glasses" },
+                    { title: "Mental Health", focus: "Stress, anxiety, depression" },
+                    { title: "Fitness & Exercise", focus: "Physical activity" },
+                    { title: "Nutrition", focus: "Healthy eating" },
+                    { title: "Sleep & Rest", focus: "Getting adequate rest" },
+                    { title: "Hygiene", focus: "Personal cleanliness" },
+                    { title: "Injuries", focus: "Cuts, bruises, broken bones" },
+                    { title: "First Aid", focus: "Emergency medical care" },
+                    { title: "Health Insurance", focus: "Medical coverage" },
+                    { title: "Preventive Care", focus: "Staying healthy" },
+                    { title: "Vaccinations", focus: "Immunizations" },
+                    { title: "Health Checkups", focus: "Regular medical exams" },
+                    { title: "Chronic Conditions", focus: "Long-term health issues" },
+                    { title: "Recovery", focus: "Getting better from illness" },
+                    { title: "Health Habits", focus: "Daily health practices" },
+                    { title: "Medical Emergencies", focus: "Urgent health situations" },
+                    { title: "Health Advice", focus: "Medical recommendations" },
+                    { title: "Month 9 Review", focus: "Health & medical mastery" }
+                ]
+            },
+            10: {
+                title: "Malaysian Culture & Traditions",
+                description: "Deep dive into Malaysian culture, festivals, and traditional practices",
+                lessons: [
+                    { title: "Malaysian Diversity", focus: "Multicultural society" },
+                    { title: "Major Religions", focus: "Islam, Buddhism, Christianity, Hinduism" },
+                    { title: "Hari Raya Celebrations", focus: "Eid festivities" },
+                    { title: "Chinese New Year", focus: "Lunar new year traditions" },
+                    { title: "Deepavali", focus: "Festival of lights" },
+                    { title: "Christmas in Malaysia", focus: "Christian celebrations" },
+                    { title: "National Day", focus: "Merdeka celebrations" },
+                    { title: "Traditional Clothing", focus: "Baju kurung, cheongsam, sari" },
+                    { title: "Malaysian Arts", focus: "Batik, wayang kulit, dance" },
+                    { title: "Music & Instruments", focus: "Traditional Malaysian music" },
+                    { title: "Architecture", focus: "Traditional and modern buildings" },
+                    { title: "Historical Sites", focus: "Important cultural locations" },
+                    { title: "Cultural Etiquette", focus: "Proper behavior in different cultures" },
+                    { title: "Wedding Traditions", focus: "Marriage customs" },
+                    { title: "Funeral Customs", focus: "Death and mourning practices" },
+                    { title: "Coming of Age", focus: "Transition to adulthood" },
+                    { title: "Traditional Games", focus: "Congkak, sepak takraw" },
+                    { title: "Storytelling", focus: "Folk tales and legends" },
+                    { title: "Handicrafts", focus: "Traditional Malaysian crafts" },
+                    { title: "Cultural Values", focus: "Respect, harmony, family" },
+                    { title: "Language Diversity", focus: "Multiple languages in Malaysia" },
+                    { title: "Cultural Fusion", focus: "Mixing of traditions" },
+                    { title: "Modern vs Traditional", focus: "Changing cultural practices" },
+                    { title: "Cultural Preservation", focus: "Keeping traditions alive" },
+                    { title: "Cultural Exchange", focus: "Learning from other cultures" },
+                    { title: "Tourism & Culture", focus: "Sharing Malaysian culture" },
+                    { title: "Cultural Challenges", focus: "Modern cultural issues" },
+                    { title: "Cultural Pride", focus: "Celebrating Malaysian identity" },
+                    { title: "Future of Culture", focus: "Cultural evolution" },
+                    { title: "Month 10 Review", focus: "Cultural mastery" }
+                ]
+            },
+            11: {
+                title: "Technology & Modern Malaysian Life",
+                description: "Navigate the digital world and modern technology in Malaysian context",
+                lessons: [
+                    { title: "Digital Devices", focus: "Smartphones, tablets, laptops" },
+                    { title: "Internet Basics", focus: "WiFi, data, connectivity" },
+                    { title: "Social Media", focus: "Facebook, Instagram, TikTok" },
+                    { title: "Messaging Apps", focus: "WhatsApp, Telegram, WeChat" },
+                    { title: "Online Shopping", focus: "Shopee, Lazada, e-commerce" },
+                    { title: "Digital Payments", focus: "Touch 'n Go, GrabPay, online banking" },
+                    { title: "Food Delivery", focus: "Foodpanda, GrabFood" },
+                    { title: "Ride-hailing", focus: "Grab, ride-sharing apps" },
+                    { title: "Streaming Services", focus: "Netflix, YouTube, music apps" },
+                    { title: "Online Learning", focus: "Educational platforms" },
+                    { title: "Work from Home", focus: "Remote work technology" },
+                    { title: "Video Calls", focus: "Zoom, Teams, virtual meetings" },
+                    { title: "Cloud Storage", focus: "Google Drive, file sharing" },
+                    { title: "Cybersecurity", focus: "Online safety and privacy" },
+                    { title: "Digital Banking", focus: "Online financial services" },
+                    { title: "Smart Home", focus: "IoT devices and automation" },
+                    { title: "Gaming", focus: "Mobile and online games" },
+                    { title: "Photography", focus: "Digital cameras and editing" },
+                    { title: "Navigation Apps", focus: "Google Maps, Waze" },
+                    { title: "News & Information", focus: "Digital media consumption" },
+                    { title: "Online Reviews", focus: "Rating and feedback systems" },
+                    { title: "Digital Marketing", focus: "Online advertising" },
+                    { title: "Tech Support", focus: "Getting help with technology" },
+                    { title: "Software Updates", focus: "Keeping apps current" },
+                    { title: "Digital Literacy", focus: "Essential tech skills" },
+                    { title: "Tech Trends", focus: "Emerging technologies" },
+                    { title: "Digital Divide", focus: "Technology access issues" },
+                    { title: "Future Technology", focus: "AI, VR, upcoming innovations" },
+                    { title: "Tech Ethics", focus: "Responsible technology use" },
+                    { title: "Month 11 Review", focus: "Technology mastery" }
+                ]
+            },
+            12: {
+                title: "Advanced Communication & Fluency",
+                description: "Master complex conversations, idioms, and achieve conversational fluency",
+                lessons: [
+                    { title: "Complex Opinions", focus: "Expressing detailed viewpoints" },
+                    { title: "Debate & Discussion", focus: "Arguing points respectfully" },
+                    { title: "Storytelling", focus: "Narrative techniques" },
+                    { title: "Humor & Jokes", focus: "Malaysian comedy and wit" },
+                    { title: "Idioms & Expressions", focus: "Common Malaysian sayings" },
+                    { title: "Slang & Colloquialisms", focus: "Informal language" },
+                    { title: "Regional Dialects", focus: "Different Malaysian accents" },
+                    { title: "Formal vs Informal", focus: "Register and appropriateness" },
+                    { title: "Business Communication", focus: "Professional language skills" },
+                    { title: "Academic Language", focus: "Scholarly communication" },
+                    { title: "Creative Writing", focus: "Artistic expression" },
+                    { title: "Public Speaking", focus: "Presentations and speeches" },
+                    { title: "Interview Skills", focus: "Professional conversations" },
+                    { title: "Negotiation", focus: "Reaching agreements" },
+                    { title: "Conflict Resolution", focus: "Solving disagreements" },
+                    { title: "Emotional Expression", focus: "Feelings and emotions" },
+                    { title: "Abstract Concepts", focus: "Philosophy and ideas" },
+                    { title: "Current Events", focus: "News and politics" },
+                    { title: "Cultural Commentary", focus: "Social observations" },
+                    { title: "Future Planning", focus: "Long-term goals" },
+                    { title: "Advice Giving", focus: "Helping others with problems" },
+                    { title: "Criticism & Praise", focus: "Constructive feedback" },
+                    { title: "Persuasion", focus: "Convincing others" },
+                    { title: "Empathy & Understanding", focus: "Emotional intelligence" },
+                    { title: "Cross-cultural Communication", focus: "International perspectives" },
+                    { title: "Language Learning Tips", focus: "Continued improvement" },
+                    { title: "Fluency Strategies", focus: "Speaking naturally" },
+                    { title: "Error Correction", focus: "Self-improvement techniques" },
+                    { title: "Confidence Building", focus: "Overcoming speaking anxiety" },
+                    { title: "Graduation & Beyond", focus: "Continuing your Malay journey" }
+                ]
+            }
+        };
+
+        // Detailed lesson content for each day
+        const lessonContent = {
+            // Month 1 lessons
+            "1-1": {
+                vocabulary: [
+                    { malay: "Selamat pagi", english: "Good morning", pronunciation: "se-lah-mat pah-gee", example: "Selamat pagi, apa khabar?" },
+                    { malay: "Selamat petang", english: "Good afternoon", pronunciation: "se-lah-mat pe-tang", example: "Selamat petang, Encik Ahmad." },
+                    { malay: "Selamat malam", english: "Good evening", pronunciation: "se-lah-mat mah-lam", example: "Selamat malam semua." },
+                    { malay: "Selamat tinggal", english: "Goodbye", pronunciation: "se-lah-mat ting-gal", example: "Selamat tinggal, jumpa lagi." },
+                    { malay: "Jumpa lagi", english: "See you again", pronunciation: "joom-pah lah-gee", example: "Jumpa lagi esok." },
+                    { malay: "Hai", english: "Hi", pronunciation: "hah-ee", example: "Hai, apa khabar?" }
+                ],
+                grammar: {
+                    title: "Basic Greetings Structure",
+                    rules: [
+                        "'Selamat' is used for formal greetings throughout the day",
+                        "Time-specific greetings: pagi (morning), petang (afternoon), malam (evening)",
+                        "Informal greetings like 'Hai' can be used with friends",
+                        "Always respond to greetings politely"
+                    ],
+                    examples: [
+                        "Selamat pagi! (Good morning!)",
+                        "Hai, apa khabar? (Hi, how are you?)",
+                        "Selamat tinggal! (Goodbye!)",
+                        "Jumpa lagi! (See you again!)"
+                    ]
+                },
+                quiz: [
+                    {
+                        question: "How do you say 'Good morning' in Malay?",
+                        options: ["Selamat pagi", "Selamat petang", "Selamat malam", "Hai"],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the appropriate greeting for afternoon?",
+                        options: ["Selamat pagi", "Selamat petang", "Selamat malam", "Jumpa lagi"],
+                        correct: 1
+                    },
+                    {
+                        question: "How do you say 'Goodbye' formally?",
+                        options: ["Hai", "Jumpa lagi", "Selamat tinggal", "Selamat pagi"],
+                        correct: 2
+                    }
+                ]
+            },
+            "1-2": {
+                vocabulary: [
+                    { malay: "Nama saya", english: "My name is", pronunciation: "nah-mah sah-yah", example: "Nama saya Sarah." },
+                    { malay: "Saya dari", english: "I am from", pronunciation: "sah-yah dah-ree", example: "Saya dari Malaysia." },
+                    { malay: "Umur saya", english: "My age is", pronunciation: "oo-moor sah-yah", example: "Umur saya dua puluh tahun." },
+                    { malay: "Saya tinggal di", english: "I live in", pronunciation: "sah-yah ting-gal dee", example: "Saya tinggal di Kuala Lumpur." },
+                    { malay: "Saya bekerja", english: "I work", pronunciation: "sah-yah be-ker-jah", example: "Saya bekerja di pejabat." },
+                    { malay: "Saya belajar", english: "I study", pronunciation: "sah-yah be-lah-jar", example: "Saya belajar di universiti." }
+                ],
+                grammar: {
+                    title: "Self-Introduction Structure",
+                    rules: [
+                        "Use 'Nama saya' followed by your name",
+                        "'Saya dari' indicates your origin or nationality",
+                        "'Umur saya' is followed by age and 'tahun' (years)",
+                        "Present tense verbs don't change form"
+                    ],
+                    examples: [
+                        "Nama saya Ahmad. (My name is Ahmad.)",
+                        "Saya dari Johor. (I am from Johor.)",
+                        "Umur saya dua puluh lima tahun. (I am 25 years old.)",
+                        "Saya bekerja sebagai guru. (I work as a teacher.)"
+                    ]
+                },
+                quiz: [
+                    {
+                        question: "How do you introduce your name?",
+                        options: ["Saya dari", "Nama saya", "Umur saya", "Saya tinggal"],
+                        correct: 1
+                    },
+                    {
+                        question: "What follows 'Saya dari'?",
+                        options: ["Your age", "Your name", "Your origin", "Your job"],
+                        correct: 2
+                    },
+                    {
+                        question: "How do you say 'I work'?",
+                        options: ["Saya belajar", "Saya bekerja", "Saya tinggal", "Saya dari"],
+                        correct: 1
+                    }
+                ]
+            }
+            // Additional lessons would continue here...
+        };
+
+        // App state management
+        let currentDay = parseInt(localStorage.getItem('currentDay')) || 1;
+        let completedDays = JSON.parse(localStorage.getItem('completedDays')) || [];
+        let streak = parseInt(localStorage.getItem('streak')) || 0;
+        let currentMonth = Math.ceil(currentDay / 30);
+        let currentSection = 'vocabulary';
+        let sectionProgress = {
+            vocabulary: false,
+            grammar: false,
+            quiz: false
+        };
+
+        // Initialize the application
+        function initApp() {
+            updateProgressOverview();
+            generateMonthsGrid();
+            registerServiceWorker();
+            setupOfflineSupport();
+        }
+        
+        // Register service worker for offline functionality
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                const swCode = `
+                    const CACHE_NAME = 'malay-mastery-v1';
+                    const urlsToCache = ['/'];
+                    
+                    self.addEventListener('install', event => {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME)
+                                .then(cache => cache.addAll(urlsToCache))
+                        );
+                    });
+                    
+                    self.addEventListener('fetch', event => {
+                        event.respondWith(
+                            caches.match(event.request)
+                                .then(response => response || fetch(event.request))
+                        );
+                    });
+                `;
+                
+                const blob = new Blob([swCode], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+                
+                navigator.serviceWorker.register(swUrl)
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            }
+        }
+        
+        // Setup offline support
+        function setupOfflineSupport() {
+            // Save app data to localStorage for offline access
+            if (!localStorage.getItem('appData')) {
+                localStorage.setItem('appData', JSON.stringify({
+                    monthDatabase: monthDatabase,
+                    lessonContent: lessonContent,
+                    version: '1.0'
+                }));
+            }
+            
+            // Add install prompt for mobile
+            let deferredPrompt;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                showInstallButton();
+            });
+        }
+        
+        function showInstallButton() {
+            const installBtn = document.createElement('button');
+            installBtn.className = 'complete-btn';
+            installBtn.innerHTML = '📱 Install App';
+            installBtn.style.position = 'fixed';
+            installBtn.style.bottom = '20px';
+            installBtn.style.right = '20px';
+            installBtn.style.zIndex = '1000';
+            installBtn.onclick = installApp;
+            document.body.appendChild(installBtn);
+        }
+        
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+
+        function updateProgressOverview() {
+            document.getElementById('completedDays').textContent = completedDays.length;
+            document.getElementById('totalProgress').textContent = Math.round((completedDays.length / 365) * 100) + '%';
+            document.getElementById('streak').textContent = streak;
+            
+            // Update today's lesson button
+            const todayBtn = document.getElementById('todayLessonBtn');
+            if (todayBtn) {
+                todayBtn.textContent = `📚 Start Today's Lesson - Day ${currentDay}`;
+            }
+        }
+
+        function startTodaysLesson() {
+            // Hide the main view and open today's lesson directly
+            document.getElementById('monthsGrid').style.display = 'none';
+            document.getElementById('progressOverview').style.display = 'none';
+            openLesson(currentDay);
+        }
+
+        function generateMonthsGrid() {
+            const monthsGrid = document.getElementById('monthsGrid');
+            monthsGrid.innerHTML = '';
+
+            for (let monthNum = 1; monthNum <= 12; monthNum++) {
+                const month = monthDatabase[monthNum];
+                const monthCard = document.createElement('div');
+                monthCard.className = 'month-card';
+
+                // Calculate month progress
+                const monthStartDay = (monthNum - 1) * 30 + 1;
+                const monthEndDay = monthNum * 30;
+                const monthCompletedDays = completedDays.filter(day => day >= monthStartDay && day <= monthEndDay).length;
+                const monthProgress = (monthCompletedDays / 30) * 100;
+
+                // Determine month status
+                let status, statusClass, statusText;
+                if (monthProgress === 100) {
+                    status = 'completed';
+                    statusClass = 'status-completed';
+                    statusText = '✅ Completed';
+                    monthCard.classList.add('completed');
+                } else if (currentDay >= monthStartDay && currentDay <= monthEndDay) {
+                    status = 'current';
+                    statusClass = 'status-current';
+                    statusText = '▶️ In Progress';
+                    monthCard.classList.add('current');
+                } else {
+                    status = 'available';
+                    statusClass = 'status-available';
+                    statusText = '📖 Available';
+                    monthCard.classList.add('available');
+                }
+
+                monthCard.innerHTML = `
+                    <div class="month-number">Month ${monthNum}</div>
+                    <div class="month-title">${month.title}</div>
+                    <div class="month-description">${month.description}</div>
+                    <div class="month-progress">
+                        <div class="month-progress-bar" style="width: ${monthProgress}%"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                        <span style="font-size: 0.9rem; color: #666;">${monthCompletedDays}/30 days</span>
+                        <div class="month-status ${statusClass}">${statusText}</div>
+                    </div>
+                `;
+
+                // Add click handler for all months
+                monthCard.onclick = () => openMonth(monthNum);
+
+                monthsGrid.appendChild(monthCard);
+            }
+        }
+
+        function openMonth(monthNum) {
+            document.getElementById('monthsGrid').style.display = 'none';
+            document.getElementById('dailyLessonsView').classList.add('active');
+
+            const month = monthDatabase[monthNum];
+            renderDailyLessons(month, monthNum);
+        }
+
+        function renderDailyLessons(month, monthNum) {
+            const monthStartDay = (monthNum - 1) * 30 + 1;
+            
+            const content = `
+                <div class="month-header">
+                    <h2>Month ${monthNum}: ${month.title}</h2>
+                    <p>${month.description}</p>
+                    <button class="back-btn" onclick="backToMonths()">← Back to Months</button>
+                </div>
+                
+                <div class="daily-lessons-grid">
+                    ${month.lessons.map((lesson, index) => {
+                        const dayNum = monthStartDay + index;
+                        const isCompleted = completedDays.includes(dayNum);
+                        const isCurrent = dayNum === currentDay;
+                        
+                        let cardClass = 'daily-lesson-card';
+                        let statusText = '';
+                        
+                        if (isCompleted) {
+                            cardClass += ' completed';
+                            statusText = '✅ Completed';
+                        } else if (isCurrent) {
+                            cardClass += ' current';
+                            statusText = '▶️ Today\'s Lesson';
+                        } else {
+                            statusText = '📖 Available';
+                        }
+                        
+                        return `
+                            <div class="${cardClass}" onclick="openLesson(${dayNum})">
+                                <div class="daily-lesson-number">Day ${dayNum}</div>
+                                <div class="daily-lesson-title">${lesson.title}</div>
+                                <div class="daily-lesson-focus">${lesson.focus}</div>
+                                <div class="daily-lesson-status ${isCompleted ? 'status-completed' : isCurrent ? 'status-current' : 'status-available'}">${statusText}</div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+            
+            document.getElementById('dailyLessonsView').innerHTML = content;
+        }
+
+        function openLesson(dayNum) {
+            // Reset section progress
+            sectionProgress = {
+                vocabulary: false,
+                grammar: false,
+                quiz: false
+            };
+
+            // Reset exercise variables
+            resetExerciseVariables();
+
+            document.getElementById('dailyLessonsView').classList.remove('active');
+            document.getElementById('lessonContent').classList.add('active');
+
+            // Get lesson content (using sample content for now)
+            const lessonKey = `${Math.ceil(dayNum / 30)}-${((dayNum - 1) % 30) + 1}`;
+            const lesson = lessonContent[lessonKey] || generateSampleLesson(dayNum);
+            
+            renderLesson(lesson, dayNum);
+        }
+
+        function generateSampleLesson(dayNum) {
+            // Generate sample lesson content for days not yet defined
+            const monthNum = Math.ceil(dayNum / 30);
+            const dayInMonth = ((dayNum - 1) % 30) + 1;
+            const month = monthDatabase[monthNum];
+            const lessonInfo = month.lessons[dayInMonth - 1];
+            
+            return {
+                vocabulary: [
+                    { malay: "Contoh", english: "Example", pronunciation: "con-toh", example: "Ini adalah contoh ayat." },
+                    { malay: "Belajar", english: "Learn", pronunciation: "be-lah-jar", example: "Saya belajar bahasa Melayu." },
+                    { malay: "Hari ini", english: "Today", pronunciation: "hah-ree ee-nee", example: "Hari ini saya belajar." },
+                    { malay: "Penting", english: "Important", pronunciation: "pen-ting", example: "Ini sangat penting." },
+                    { malay: "Faham", english: "Understand", pronunciation: "fah-ham", example: "Saya faham sekarang." },
+                    { malay: "Praktis", english: "Practice", pronunciation: "prak-tees", example: "Kita perlu praktis setiap hari." }
+                ],
+                grammar: {
+                    title: lessonInfo.focus,
+                    rules: [
+                        "This is a sample grammar rule for demonstration",
+                        "Grammar rules help you understand sentence structure",
+                        "Practice makes perfect in language learning",
+                        "Each day builds on previous knowledge"
+                    ],
+                    examples: [
+                        "Ini contoh ayat. (This is an example sentence.)",
+                        "Saya belajar setiap hari. (I learn every day.)",
+                        "Bahasa Melayu mudah. (Malay is easy.)",
+                        "Praktis adalah penting. (Practice is important.)"
+                    ]
+                },
+                quiz: [
+                    {
+                        question: "What does 'Belajar' mean?",
+                        options: ["Teach", "Learn", "Practice", "Understand"],
+                        correct: 1
+                    },
+                    {
+                        question: "How do you say 'Today' in Malay?",
+                        options: ["Semalam", "Hari ini", "Esok", "Minggu ini"],
+                        correct: 1
+                    },
+                    {
+                        question: "What is 'Penting' in English?",
+                        options: ["Easy", "Difficult", "Important", "Simple"],
+                        correct: 2
+                    }
+                ]
+            };
+        }
+
+        function renderLesson(lesson, dayNum) {
+            const monthNum = Math.ceil(dayNum / 30);
+            const dayInMonth = ((dayNum - 1) % 30) + 1;
+            const month = monthDatabase[monthNum];
+            const lessonInfo = month.lessons[dayInMonth - 1];
+            
+            const content = `
+                <div class="month-header">
+                    <h2>Day ${dayNum}: ${lessonInfo.title}</h2>
+                    <p>Focus: ${lessonInfo.focus}</p>
+                    <button class="back-btn" onclick="backToDailyLessons(${monthNum})">← Back to Month ${monthNum}</button>
+                </div>
+                
+                <div class="lesson-sections">
+                    <button class="section-btn active" onclick="showSection('vocabulary')">📚 Vocabulary</button>
+                    <button class="section-btn" onclick="showSection('grammar')">📝 Grammar</button>
+                    <button class="section-btn" onclick="showSection('quiz')">🧠 Quiz</button>
+                </div>
+                
+                <div id="vocabularySection" class="section-content active">
+                    ${renderVocabulary(lesson.vocabulary)}
+                </div>
+                
+                <div id="grammarSection" class="section-content">
+                    ${renderGrammar(lesson.grammar)}
+                </div>
+                
+                <div id="quizSection" class="section-content">
+                    ${renderQuiz(lesson.quiz, dayNum)}
+                </div>
+            `;
+            
+            document.getElementById('lessonContent').innerHTML = content;
+        }
+
+        function renderVocabulary(vocabulary) {
+            let html = '<h3>📖 Essential Vocabulary</h3><div class="vocabulary-grid">';
+            
+            vocabulary.forEach(item => {
+                html += `
+                    <div class="vocab-item">
+                        <div class="vocab-malay">${item.malay}</div>
+                        <div class="vocab-english">${item.english}</div>
+                        <div class="vocab-pronunciation">[${item.pronunciation}]</div>
+                        <div class="vocab-example">${item.example}</div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            html += '<div style="margin-top: 40px;"><h3>🎯 Practice Exercise: Match the Words</h3>';
+            html += '<div id="vocabularyExercise">' + renderVocabularyExercise(vocabulary) + '</div></div>';
+            return html;
+        }
+
+        function renderVocabularyExercise(vocabulary) {
+            // Shuffle and take first 6 words for the exercise
+            const exerciseWords = vocabulary.slice(0, 6);
+            const shuffledEnglish = [...exerciseWords.map(item => item.english)].sort(() => Math.random() - 0.5);
+            
+            let html = '<div class="matching-exercise">';
+            html += '<p>Connect each Malay word with its English meaning by clicking on pairs:</p>';
+            html += '<div class="matching-container">';
+            
+            // Malay words column
+            html += '<div class="malay-column">';
+            exerciseWords.forEach((item, index) => {
+                html += `<div class="match-item malay-item" data-word="${item.english}" onclick="selectMatchItem(this)">${item.malay}</div>`;
+            });
+            html += '</div>';
+            
+            // English words column
+            html += '<div class="english-column">';
+            shuffledEnglish.forEach((english, index) => {
+                html += `<div class="match-item english-item" data-word="${english}" onclick="selectMatchItem(this)">${english}</div>`;
+            });
+            html += '</div>';
+            
+            html += '</div>';
+            html += '<div id="matchingFeedback"></div>';
+            html += '<div id="vocabularyComplete" style="display: none; text-align: center; margin-top: 30px;"><button class="complete-btn" onclick="completeSection(\'vocabulary\')">✅ Complete Vocabulary</button></div>';
+            html += '</div>';
+            
+            return html;
+        }
+
+        function renderGrammar(grammar) {
+            let html = `<h3>📝 Grammar Focus: ${grammar.title}</h3>`;
+            html += '<div class="grammar-section">';
+            
+            html += '<h4>Key Rules:</h4>';
+            grammar.rules.forEach(rule => {
+                html += `<div class="grammar-rule">${rule}</div>`;
+            });
+            
+            html += '<h4>Examples:</h4>';
+            grammar.examples.forEach(example => {
+                html += `<div class="grammar-rule">${example}</div>`;
+            });
+            
+            html += '</div>';
+            
+            // Add grammar practice exercise
+            html += '<div style="margin-top: 40px;"><h3>✍️ Grammar Practice</h3>';
+            html += '<div id="grammarExercise">' + renderGrammarExercise(grammar) + '</div></div>';
+            return html;
+        }
+
+        function renderGrammarExercise(grammar) {
+            let html = '<div class="grammar-exercise">';
+            html += '<p>Complete these sentences using the grammar rules you learned:</p>';
+            
+            // Generate practice sentences based on the grammar topic
+            const exercises = generateGrammarExercises(grammar.title);
+            
+            exercises.forEach((exercise, index) => {
+                html += `
+                    <div class="grammar-question">
+                        <p><strong>Question ${index + 1}:</strong> ${exercise.question}</p>
+                        <input type="text" id="grammarAnswer${index}" class="grammar-input" placeholder="Type your answer here...">
+                        <button class="check-btn" onclick="checkGrammarAnswer(${index}, '${exercise.answer}')">Check Answer</button>
+                        <div id="grammarFeedback${index}" class="grammar-feedback"></div>
+                    </div>
+                `;
+            });
+            
+            html += '<div id="grammarComplete" style="display: none; text-align: center; margin-top: 30px;"><button class="complete-btn" onclick="completeSection(\'grammar\')">✅ Complete Grammar</button></div>';
+            html += '</div>';
+            
+            return html;
+        }
+
+        function generateGrammarExercises(grammarTitle) {
+            // Translation exercises for grammar practice
+            return [
+                { 
+                    question: "Translate to Malay: 'Good morning, how are you?'", 
+                    answer: "Selamat pagi, apa khabar?",
+                    type: "translation"
+                },
+                { 
+                    question: "Translate to English: 'Nama saya Ahmad dan saya dari Malaysia.'", 
+                    answer: "My name is Ahmad and I am from Malaysia.",
+                    type: "translation"
+                },
+                { 
+                    question: "Translate to Malay: 'I live in Kuala Lumpur and I work as a teacher.'", 
+                    answer: "Saya tinggal di Kuala Lumpur dan saya bekerja sebagai guru.",
+                    type: "translation"
+                }
+            ];
+        }
+
+        function renderQuiz(quiz, dayNum) {
+            return `
+                <h3>🧠 Knowledge Check</h3>
+                <div id="quizContainer">
+                    ${renderQuizQuestion(0, quiz, dayNum)}
+                </div>
+            `;
+        }
+
+        function renderQuizQuestion(index, quiz, dayNum) {
+            if (index >= quiz.length) {
+                return `
+                    <div style="text-align: center; padding: 40px;">
+                        <h2>🎉 Quiz Complete!</h2>
+                        <p>Excellent work! You've mastered today's content.</p>
+                        <button class="complete-btn" onclick="completeSection('quiz')">✅ Complete Quiz</button>
+                    </div>
+                `;
+            }
+            
+            const question = quiz[index];
+            return `
+                <div class="quiz-container">
+                    <div class="question">Question ${index + 1}/${quiz.length}: ${question.question}</div>
+                    <div class="options">
+                        ${question.options.map((option, i) => 
+                            `<div class="option" onclick="selectQuizOption(${i}, ${question.correct}, ${index}, ${dayNum})">${option}</div>`
+                        ).join('')}
+                    </div>
+                    <div id="quizFeedback"></div>
+                </div>
+            `;
+        }
+
+        function showSection(sectionName) {
+            currentSection = sectionName;
+            
+            // Update button states
+            document.querySelectorAll('.section-btn').forEach(btn => {
+                btn.classList.remove('active');
+                const btnSection = btn.textContent.split(' ')[1].toLowerCase();
+                if (sectionProgress[btnSection]) {
+                    btn.classList.add('completed');
+                }
+            });
+            event.target.classList.add('active');
+            
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(section => section.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionName + 'Section').classList.add('active');
+        }
+
+        function completeSection(section) {
+            sectionProgress[section] = true;
+            
+            // Update button appearance
+            const buttons = document.querySelectorAll('.section-btn');
+            buttons.forEach(btn => {
+                const btnSection = btn.textContent.split(' ')[1].toLowerCase();
+                if (btnSection === section) {
+                    btn.classList.add('completed');
+                }
+            });
+            
+            // Check if all sections are complete
+            const allComplete = Object.values(sectionProgress).every(completed => completed);
+            if (allComplete) {
+                completeLesson();
+            } else {
+                // Move to next incomplete section
+                const sections = ['vocabulary', 'grammar', 'quiz'];
+                const nextSection = sections.find(s => !sectionProgress[s]);
+                if (nextSection) {
+                    showSection(nextSection);
+                }
+            }
+        }
+
+        function completeLesson() {
+            const dayNum = parseInt(document.querySelector('.month-header h2').textContent.match(/Day (\d+)/)[1]);
+            
+            if (!completedDays.includes(dayNum)) {
+                completedDays.push(dayNum);
+                
+                // Only advance currentDay if this was the current day
+                if (dayNum === currentDay) {
+                    currentDay++;
+                    streak++;
+                    localStorage.setItem('currentDay', currentDay.toString());
+                    localStorage.setItem('streak', streak.toString());
+                }
+                
+                // Save progress
+                localStorage.setItem('completedDays', JSON.stringify(completedDays));
+                
+                // Show completion message with next lesson button
+                const nextLessonNum = dayNum + 1;
+                const nextLessonButton = nextLessonNum <= 365 ? 
+                    `<button class="complete-btn" onclick="openLesson(${nextLessonNum})">Continue to Day ${nextLessonNum} →</button>` : 
+                    '<div class="achievement-badge">🏆 All 365 Days Complete!</div>';
+                
+                document.getElementById('lessonContent').innerHTML = `
+                    <div style="text-align: center; padding: 60px;">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+                        <h1>Day ${dayNum} Complete!</h1>
+                        <p style="font-size: 1.3rem; margin: 20px 0;">Congratulations! You've mastered today's lesson.</p>
+                        <div class="achievement-badge">Day ${dayNum} Mastered</div>
+                        ${streak % 7 === 0 ? '<div class="achievement-badge">7-Day Streak!</div>' : ''}
+                        ${streak % 30 === 0 ? '<div class="achievement-badge">30-Day Streak!</div>' : ''}
+                        ${completedDays.length === 365 ? '<div class="achievement-badge">🏆 Course Complete!</div>' : ''}
+                        <div style="margin-top: 30px;">
+                            ${nextLessonButton}
+                            <button class="back-btn" onclick="backToDailyLessons(${Math.ceil(dayNum / 30)})">Back to Month</button>
+                            <button class="back-btn" onclick="backToMonths()">Back to Home</button>
+                        </div>
+                    </div>
+                `;
+                
+                // Update progress overview
+                updateProgressOverview();
+            }
+        }
+
+        function nextDay() {
+            if (currentDay <= 365) {
+                updateProgressOverview();
+                const monthNum = Math.ceil(currentDay / 30);
+                
+                // Auto-open the next day's lesson
+                if (currentDay <= 365) {
+                    openLesson(currentDay);
+                }
+            }
+        }
+
+        function selectQuizOption(selectedIndex, correctIndex, questionIndex, dayNum) {
+            const options = document.querySelectorAll('.option');
+            const feedback = document.getElementById('quizFeedback');
+            
+            options.forEach((option, index) => {
+                option.style.pointerEvents = 'none';
+                if (index === correctIndex) {
+                    option.classList.add('correct');
+                } else if (index === selectedIndex && index !== correctIndex) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            if (selectedIndex === correctIndex) {
+                feedback.innerHTML = '<div class="feedback correct">🎉 Correct! Well done!</div>';
+            } else {
+                feedback.innerHTML = '<div class="feedback incorrect">❌ Incorrect. The correct answer is highlighted above.</div>';
+            }
+            
+            setTimeout(() => {
+                const lessonKey = `${Math.ceil(dayNum / 30)}-${((dayNum - 1) % 30) + 1}`;
+                const lesson = lessonContent[lessonKey] || generateSampleLesson(dayNum);
+                document.getElementById('quizContainer').innerHTML = renderQuizQuestion(questionIndex + 1, lesson.quiz, dayNum);
+            }, 2000);
+        }
+
+        function backToMonths() {
+            document.getElementById('dailyLessonsView').classList.remove('active');
+            document.getElementById('monthsGrid').style.display = 'grid';
+            document.getElementById('progressOverview').style.display = 'grid';
+            generateMonthsGrid();
+        }
+
+        function backToDailyLessons(monthNum) {
+            document.getElementById('lessonContent').classList.remove('active');
+            document.getElementById('dailyLessonsView').classList.add('active');
+            
+            const month = monthDatabase[monthNum];
+            renderDailyLessons(month, monthNum);
+        }
+
+        // Vocabulary matching exercise variables
+        let selectedMalayItem = null;
+        let selectedEnglishItem = null;
+        let matchedPairs = 0;
+        let totalPairs = 6;
+
+        // Grammar exercise variables
+        let grammarCorrectAnswers = 0;
+        let totalGrammarQuestions = 3;
+
+        function selectMatchItem(element) {
+            const isMalay = element.classList.contains('malay-item');
+            const isEnglish = element.classList.contains('english-item');
+            
+            if (element.classList.contains('correct')) return; // Already matched
+            
+            if (isMalay) {
+                // Deselect previous Malay selection
+                if (selectedMalayItem) {
+                    selectedMalayItem.classList.remove('selected');
+                }
+                selectedMalayItem = element;
+                element.classList.add('selected');
+            } else if (isEnglish) {
+                // Deselect previous English selection
+                if (selectedEnglishItem) {
+                    selectedEnglishItem.classList.remove('selected');
+                }
+                selectedEnglishItem = element;
+                element.classList.add('selected');
+            }
+            
+            // Check for match when both items are selected
+            if (selectedMalayItem && selectedEnglishItem) {
+                checkMatch();
+            }
+        }
+
+        function checkMatch() {
+            const malayWord = selectedMalayItem.dataset.word;
+            const englishWord = selectedEnglishItem.dataset.word;
+            
+            if (malayWord === englishWord) {
+                // Correct match
+                selectedMalayItem.classList.remove('selected');
+                selectedEnglishItem.classList.remove('selected');
+                selectedMalayItem.classList.add('correct');
+                selectedEnglishItem.classList.add('correct');
+                
+                matchedPairs++;
+                
+                // Show success feedback
+                const feedback = document.getElementById('matchingFeedback');
+                feedback.innerHTML = '<div class="feedback correct">✅ Correct match!</div>';
+                
+                // Check if all pairs are matched
+                if (matchedPairs === totalPairs) {
+                    setTimeout(() => {
+                        feedback.innerHTML = '<div class="feedback correct">🎉 Excellent! All words matched correctly!</div>';
+                        document.getElementById('vocabularyComplete').style.display = 'block';
+                    }, 1000);
+                }
+            } else {
+                // Incorrect match
+                selectedMalayItem.classList.add('incorrect');
+                selectedEnglishItem.classList.add('incorrect');
+                
+                const feedback = document.getElementById('matchingFeedback');
+                feedback.innerHTML = '<div class="feedback incorrect">❌ Try again! These words don\'t match.</div>';
+                
+                // Reset after 1.5 seconds
+                setTimeout(() => {
+                    selectedMalayItem.classList.remove('incorrect', 'selected');
+                    selectedEnglishItem.classList.remove('incorrect', 'selected');
+                    feedback.innerHTML = '';
+                }, 1500);
+            }
+            
+            selectedMalayItem = null;
+            selectedEnglishItem = null;
+        }
+
+        function checkGrammarAnswer(questionIndex, correctAnswer) {
+            const userAnswer = document.getElementById(`grammarAnswer${questionIndex}`).value.trim();
+            const feedback = document.getElementById(`grammarFeedback${questionIndex}`);
+            
+            if (userAnswer.length === 0) {
+                feedback.className = 'grammar-feedback incorrect';
+                feedback.innerHTML = '❌ Please write your translation.';
+                return;
+            }
+            
+            // For translation exercises, be more flexible with answers
+            const userLower = userAnswer.toLowerCase().replace(/[.,!?]/g, '').trim();
+            const correctLower = correctAnswer.toLowerCase().replace(/[.,!?]/g, '').trim();
+            
+            // Check if the answer is close enough (contains key words)
+            const userWords = userLower.split(' ');
+            const correctWords = correctLower.split(' ');
+            const matchingWords = userWords.filter(word => correctWords.includes(word));
+            const accuracy = matchingWords.length / correctWords.length;
+            
+            if (userLower === correctLower || accuracy >= 0.7) {
+                feedback.className = 'grammar-feedback correct';
+                feedback.innerHTML = '✅ Excellent translation! Well done!';
+                grammarCorrectAnswers++;
+            } else if (accuracy >= 0.4) {
+                feedback.className = 'grammar-feedback correct';
+                feedback.innerHTML = `✅ Good attempt! The ideal answer is: <strong>${correctAnswer}</strong>`;
+                grammarCorrectAnswers++;
+            } else {
+                feedback.className = 'grammar-feedback incorrect';
+                feedback.innerHTML = `❌ Try again! The correct translation is: <strong>${correctAnswer}</strong>`;
+                return;
+            }
+            
+            // Disable the input and button after correct answer
+            document.getElementById(`grammarAnswer${questionIndex}`).disabled = true;
+            event.target.disabled = true;
+            event.target.textContent = '✅ Completed';
+            
+            // Check if all questions are answered correctly
+            if (grammarCorrectAnswers === totalGrammarQuestions) {
+                setTimeout(() => {
+                    document.getElementById('grammarComplete').style.display = 'block';
+                }, 500);
+            }
+        }
+
+        function resetExerciseVariables() {
+            // Reset vocabulary exercise variables
+            selectedMalayItem = null;
+            selectedEnglishItem = null;
+            matchedPairs = 0;
+            
+            // Reset grammar exercise variables
+            grammarCorrectAnswers = 0;
+        }
+
+        // Initialize the app when page loads
+        initApp();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'986fd3950259d4a9',t:'MTc1OTE5NDQ3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
